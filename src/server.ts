@@ -1,16 +1,11 @@
 import express from 'express'
-import cors from 'cors'
-import requireDir from 'require-dir'
 
-const mongoose = require('mongoose')
+import '@controllers/UsersController'
 
 const app = express()
-app.use(cors())
-app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27018/kabana', { useNewUrlParser: true })
+app.get('/', (req, res) => {
+  return res.json({ message: 'Hello World' })
+})
 
-// Requisitando os models
-requireDir('./models')
-app.use('/api', require('./routes'))
-app.listen(3001)
+app.listen(3333)
